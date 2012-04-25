@@ -92,3 +92,26 @@
 		
 		return $files;
 	}
+	
+	function deadfile_detector_format_data_size($size) {
+		$bytes = $size;
+		$kilo_bytes = 0;
+		
+		if($bytes == 0) {
+			return '-';
+		}
+		
+		if($bytes > 1024) {
+			$kilo_bytes = ($bytes/1024);
+			$result = number_format($kilo_bytes, 1, ',', '.') . ' KB';
+		} else {
+			$result = number_format($bytes, 1, ',', '.') . ' B';
+		}
+		
+		if($kilo_bytes > 1024) {
+			$mega_bytes = ($bytes/1024);
+			$result = number_format($kilo_bytes, 1, ',', '.') . ' MB';
+		}
+		
+		return $result;
+	}
